@@ -1,0 +1,61 @@
+{ "name": "Ledger",
+  "scopeName": "source.ledger", 
+  "fileTypes": ["ldg","ledger","ldgr"], 
+  "patterns": [
+    {
+      "match": "^\\s*(;.*)$",
+      "captures": {
+        "1": { "name": "comment.line" }
+      }
+    },
+    {
+        "match": "^(\\d{4}[/-]\\d{2}[/-]\\d{2})([=]?)(\\d{4}[/-]\\d{2}[/-]\\d{2})?\\s+(.+)$",
+        "captures": {
+          "1": { "name": "string.other.date"},
+          "2": { "name": "punctuation.separator" },
+          "3": { "name": "string.other.edate"},
+          "4": { "name": "markup.italic.desc" }
+        }
+    },
+    {
+        "match": "^\\s+([\\w:\\s_-]+)\\s+([-$£¥€¢\\d.,_]+.*)$",
+        "captures": {
+          "1": { "name": "markup.bold.account"},
+          "2": { "name": "variable.other.amount" }
+        }
+    },
+    {
+        "match": "^\\s+([\\w:\\s_-]+)\\s*$",
+        "name": "markup.bold.account"
+    },
+    {
+        "match": "^(!\\w+)(.*)$",
+        "captures": {
+          "1": { "name": "keyword.control" },
+          "2": { "name": "constant.other" }
+        }
+    },
+    {
+        "match": "^([YPNDCiobh]).*$",
+        "captures": {
+          "1": { "name": "keyword.other" },
+          "2": { "name": "constant.other" }
+        }
+    },
+    {
+      "match": "^(~)\\s(.*?)$",
+      "captures": {
+          "1": { "name": "punctuation.section.period" },
+          "2": { "name": "constant.other.expression" }
+      }
+    },
+    {
+      "match": "^(=)\\s(.*?)$",
+      "captures": {
+          "1": { "name": "punctuation.section.automated" },
+          "2": { "name": "string.regexp.expression" }
+      }
+    }
+  ],
+  "uuid": "806052d8-c579-43e0-918e-02ba9033b149"
+}
