@@ -1,6 +1,6 @@
 { "name": "Ledger",
   "scopeName": "source.ledger", 
-  "fileTypes": ["ldg","ledger","ldgr"], 
+  "fileTypes": ["ldg","ledger","ldgr", "journal"], 
   "patterns": [
     {
       "match": "^\\s*(;.*)$",
