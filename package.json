@@ -1,0 +1,11 @@
+{
+  "name": "sublime-ledger-syntax",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/scopes.cjs"
+  },
+  "devDependencies": {
+    "vscode-oniguruma": "2.0.1",
+    "vscode-textmate": "9.3.2"
+  }
+}

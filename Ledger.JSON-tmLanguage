@@ -9,24 +9,52 @@
       }
     },
     {
-        "match": "^(\\d{4}[/-]\\d{2}[/-]\\d{2})([=]?)(\\d{4}[/-]\\d{2}[/-]\\d{2})?\\s+(.+)$",
+      "begin": "^(account)[ \\t]+(.+)$",
+      "beginCaptures": {
+        "1": { "name": "keyword.control" },
+        "2": { "name": "markup.bold.account" }
+      },
+      "end": "^(?![ \\t])|^[ \\t]*$",
+      "patterns": [
+        {
+          "match": "^[ \\t]*(;.*)$",
+          "captures": {
+            "1": { "name": "comment.line" }
+          }
+        },
+        {
+          "match": "^[ \\t]+(note)(?:[ \\t]+(.*))?$",
+          "captures": {
+            "1": { "name": "keyword.control" },
+            "2": { "name": "constant.other" }
+          }
+        }
+      ]
+    },
+    {
+        "match": "^(\\d{4}[/-]\\d{2}[/-]\\d{2})([=]?)(\\d{4}[/-]\\d{2}[/-]\\d{2})?\\s+(.+?)(?:(?:[ \\t]{2,}|\\t)(;.*))?$",
         "captures": {
           "1": { "name": "string.other.date"},
           "2": { "name": "punctuation.separator" },
           "3": { "name": "string.other.edate"},
-          "4": { "name": "markup.italic.desc" }
+          "4": { "name": "markup.italic.desc" },
+          "5": { "name": "comment.line" }
         }
     },
     {
-        "match": "^\\s+([\\w:\\s_-]+)\\s+([-$£¥€¢\\d.,_]+.*)$",
+        "match": "^\\s+([\\w:\\s_-]+)\\s+([-$£¥€¢\\d.,_]+(?:\"(?:[^\"\\\\]|\\\\.)*\"|[^\";\\r\\n])*)(;.*)?$",
         "captures": {
           "1": { "name": "markup.bold.account"},
-          "2": { "name": "variable.other.amount" }
+          "2": { "name": "variable.other.amount" },
+          "3": { "name": "comment.line" }
         }
     },
     {
-        "match": "^\\s+([\\w:\\s_-]+)\\s*$",
-        "name": "markup.bold.account"
+        "match": "^\\s+([\\w:\\s_-]+?)(?:(?:[ \\t]{2,}|\\t)(;.*)|\\s*)$",
+        "captures": {
+          "1": { "name": "markup.bold.account" },
+          "2": { "name": "comment.line" }
+        }
     },
     {
         "match": "^(!\\w+)(.*)$",

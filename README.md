@@ -6,3 +6,7 @@ The easiest way to install this package is through [Package Control](http://wbon
 
 Otherwise, **if you have Git**: clone the repository in your Sublime Text "Packages" directory (Sublime Menu -> Preferences -> Browse Packages…).
 **If you don’t have Git**, download the [source zip](https://github.com/moeffju/sublime-ledger-syntax/archive/master.zip) and unpack it into a new directory named `sublime-ledger-syntax` within your Packages directory.
+
+## Tests
+
+With Node.js 18 or newer, run `npm ci` followed by `npm test`. The tests check that both grammar files are identical and verify scopes using TextMate and Oniguruma.

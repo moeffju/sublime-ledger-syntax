@@ -25,6 +25,57 @@
 			<string>^\s*(;.*)$</string>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>^(account)[ \t]+(.+)$</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>markup.bold.account</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>^(?![ \t])|^[ \t]*$</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>^[ \t]*(;.*)$</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>comment.line</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>^[ \t]+(note)(?:[ \t]+(.*))?$</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>keyword.control</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>constant.other</string>
+						</dict>
+					</dict>
+				</dict>
+			</array>
+		</dict>
+		<dict>
 			<key>captures</key>
 			<dict>
 				<key>1</key>
@@ -47,9 +98,14 @@
 					<key>name</key>
 					<string>markup.italic.desc</string>
 				</dict>
+				<key>5</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>^(\d{4}[/-]\d{2}[/-]\d{2})([=]?)(\d{4}[/-]\d{2}[/-]\d{2})?\s+(.+)$</string>
+			<string>^(\d{4}[/-]\d{2}[/-]\d{2})([=]?)(\d{4}[/-]\d{2}[/-]\d{2})?\s+(.+?)(?:(?:[ \t]{2,}|\t)(;.*))?$</string>
 		</dict>
 		<dict>
 			<key>captures</key>
@@ -64,15 +120,31 @@
 					<key>name</key>
 					<string>variable.other.amount</string>
 				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line</string>
+				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s+([\w:\s_-]+)\s+([-$£¥€¢\d.,_]+.*)$</string>
+			<string>^\s+([\w:\s_-]+)\s+([-$£¥€¢\d.,_]+(?:"(?:[^"\\]|\\.)*"|[^";\r\n])*)(;.*)?$</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>^\s+([\w:\s_-]+)\s*$</string>
-			<key>name</key>
-			<string>markup.bold.account</string>
+			<string>^\s+([\w:\s_-]+?)(?:(?:[ \t]{2,}|\t)(;.*)|\s*)$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>markup.bold.account</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>comment.line</string>
+				</dict>
+			</dict>
 		</dict>
 		<dict>
 			<key>captures</key>
